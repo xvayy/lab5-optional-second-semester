@@ -1,0 +1,4 @@
+Linear Equation: 2x + -4 = 0
+Quadratic Equation: 1x^2 + -3x + 2 = 0
+Solution: 2.000000
+Two solutions: 2.000000 and 1.000000

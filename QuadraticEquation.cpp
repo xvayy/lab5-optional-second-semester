@@ -1,33 +1,29 @@
 ﻿#include "QuadraticEquation.h"
 #include <iostream>
-//Конструктор з параметрами
-QuadraticEquation::QuadraticEquation(double a, double b, double c)
-{
-	this->a = a;
-	this->b = b;
-	this->c = c;
-}
-//Метод розв'язання квадратного рівняння
-void QuadraticEquation::solve()
-{
+#include <cmath>
 
-	double D = b * b - 4 * a * c;
-	
-	if (D > 0)
-	{
-		cout << "Solving a quadratic equation:x1 = " << (-b + sqrt(D)) / (2 * a) << endl;
-		cout << "Solving a quadratic equation:x2 = " << (-b - sqrt(D)) / (2 * a) << endl;
-	}
-	else if (D == 0)
-	{
-		cout << "x = " << -b / (2 * a) << endl;
-	}
-	else
-	{
-		cout << "Solving a quadratic equation:The equation has no solutions" << endl;
-	}
-}
-//Деструктор
-QuadraticEquation::~QuadraticEquation()
-{}
+using namespace std;
 
+QuadraticEquation::QuadraticEquation(double a, double b, double c){
+    this->a = a;
+    this->b = b;
+    this->c = c;
+}
+
+string QuadraticEquation::solve() {
+    double discriminant = b * b - 4 * a * c;
+    if (discriminant > 0) {
+        double x1 = (-b + sqrt(discriminant)) / (2 * a);
+        double x2 = (-b - sqrt(discriminant)) / (2 * a);
+        return "Two solutions: " + to_string(x1) + " and " + to_string(x2);
+    } else if (discriminant == 0) {
+        double x = -b / (2 * a);
+        return "One solution: " + to_string(x);
+    } else {
+        return "No real solution.";
+    }
+}
+
+void QuadraticEquation::print(ostream& os) const {
+    os << "Quadratic Equation: " << a << "x^2 + " << b << "x + " << c << " = 0" << endl;
+}
